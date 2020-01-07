@@ -5,12 +5,13 @@
   "author": "Andrej",
   "license": "MIT",
   "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "nodemon app.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.8.5",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "socket.io": "^2.3.0"
   }
 }
