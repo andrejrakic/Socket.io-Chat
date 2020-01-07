@@ -22,7 +22,11 @@ export default function Channel() {
 				type='text'
 				onChange={e => setMessage(e.target.value)}
 				value={message}></input>
-			<button onClick={() => socket.emit('channel', { body: message })}>
+			<button
+				onClick={() => {
+					socket.emit('channel', { body: message });
+					setMessage('');
+				}}>
 				Send
 			</button>
 		</div>
