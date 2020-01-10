@@ -13,17 +13,6 @@ app.listen(port, () =>
 	console.log(`🚀  Chat app is listening on port ${port}!`)
 );
 
-mongoose
-	.connect(
-		`mongodb+srv://andrej:naprednebazepodataka@cluster0-bqac9.mongodb.net/chatapp`,
-		{ useNewUrlParser: true, useUnifiedTopology: true }
-	)
-	.then(() => {
-		console.log(`🖐️  Mongoose connected to DB`);
-		//server.applyMiddleware({ app, path: '/graphql' });
-	})
-	.catch(err => console.log(err));
-
 const User = mongoose.model('User', {
 	authToken: String,
 	email: String,
@@ -33,7 +22,6 @@ const User = mongoose.model('User', {
 	active: Boolean
 });
 
-// Construct a schema, using GraphQL schema language
 const typeDefs = gql`
 	scalar Date
 
@@ -76,7 +64,6 @@ const typeDefs = gql`
 	}
 `;
 
-// Provide resolver functions for your schema fields
 const resolvers = {
 	Query: {
 		login: async (parent, args) => {
@@ -109,7 +96,16 @@ const server = new ApolloServer({
 	resolvers
 });
 
-server.applyMiddleware({ app });
+mongoose
+	.connect(
+		`mongodb+srv://andrej:naprednebazepodataka@cluster0-bqac9.mongodb.net/chatapp`,
+		{ useNewUrlParser: true, useUnifiedTopology: true }
+	)
+	.then(() => {
+		console.log(`🖐️  Mongoose connected to DB`);
+		server.applyMiddleware({ app, path: '/graphql' });
+	})
+	.catch(err => console.log(err));
 
 io.on('connection', function(socket) {
 	//socket.emit('news', { hello: 'world' });
