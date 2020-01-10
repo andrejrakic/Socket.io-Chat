@@ -32,7 +32,6 @@ const typeDefs = gql`
 		username: String!
 		password: String!
 		avatar: String
-		active: Boolean!
 		channels: [Channel!]
 	}
 
@@ -59,7 +58,6 @@ const typeDefs = gql`
 			username: String!
 			password: String!
 			avatar: String!
-			active: Boolean!
 		): User
 	}
 `;

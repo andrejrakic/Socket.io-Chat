@@ -29,11 +29,19 @@ export default function Home() {
 
 	const [channel, setChannel] = useState('general');
 	let channels = ['general', 'random', 'assigments', 'food & beverage'];
+	const [searchPattern, setSearchPattern] = useState('');
 
 	return (
 		<div>
 			<div style={{ width: '30%', float: 'left' }}>
 				<h1 style={{ color: '#fafafa' }}>Home</h1>
+				<input
+					type='text'
+					onChange={e => setSearchPattern(e.target.value)}
+					value={searchPattern}
+					placeholder='Search...'
+				/>
+				<button onClick={() => alert(searchPattern)}>Search</button>
 				{channels.map(ch => (
 					<p style={{ color: 'white' }} onClick={() => setChannel(ch)}>
 						#{ch}
