@@ -55,7 +55,7 @@
 </a>
 
 
-###### Clanovi tima
+<br />
 
 
 👨🏻‍💻 andrej.rakic@elfak.rs
