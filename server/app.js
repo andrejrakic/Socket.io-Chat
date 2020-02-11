@@ -16,10 +16,15 @@ app.listen(port, () =>
 const User = mongoose.model('User', {
 	authToken: String,
 	email: String,
-	username: String,
+	name: String,
 	password: String,
 	avatar: String,
-	active: Boolean
+	channels: [{ type: mongoose.Schema.Types.ObjectId }]
+});
+
+const Channel = mongoose.model('Channel', {
+	name: String,
+	messages: [{ from: String, body: String }]
 });
 
 const typeDefs = gql`
@@ -29,36 +34,41 @@ const typeDefs = gql`
 		_id: ID!
 		authToken: String
 		email: String!
-		username: String!
+		name: String!
 		password: String!
 		avatar: String
-		channels: [Channel!]
+		channels: [Channel]
 	}
 
 	type Channel {
 		_id: ID!
 		name: String!
-		messages: [Message!]
+		messages: [Messages]
 	}
 
-	type Message {
-		_id: ID!
+	type Messages {
 		from: String!
-		to: Channel!
 		body: String!
 	}
 
 	type Query {
 		login(email: String!, password: String!): User
+		getUsers: [User]
+		getChannel(channelID: ID!): Channel
+		getChannels: [Channel]
+		search(searchPattern: String!): [Channel]
+		searchUsers(searchPattern: String!): [User]
 	}
 
 	type Mutation {
 		createUser(
 			email: String!
-			username: String!
+			name: String!
 			password: String!
 			avatar: String!
 		): User
+		createChannel(name: String!): Channel
+		newMessage(from: String!, body: String!, to: ID!): Channel
 	}
 `;
 
@@ -78,13 +88,59 @@ const resolvers = {
 			} else {
 				throw new Error('Incorrect email or password');
 			}
+		},
+		getUsers: async (parent, args) => {
+			const users = await User.find();
+			return users;
+		},
+		getChannel: async (parent, args) => {
+			const channel = await Channel.findById(
+				mongoose.Types.ObjectId(args.channelID)
+			);
+			return channel;
+		},
+		getChannels: async (parent, args) => {
+			const channels = await Channel.find();
+			return channels;
+		},
+		search: async (parent, args) => {
+			const channels = await Channel.find({
+				name: { $regex: args.searchPattern.toLowerCase() }
+			});
+			return channels;
+		},
+		searchUsers: async (parent, args) => {
+			const users = await User.find({
+				name: { $regex: args.searchPattern.toLowerCase() }
+			});
+			return users;
 		}
 	},
 	Mutation: {
-		createUser: async (_, { email, password, username, avatar }) => {
-			const user = new User({ email, password, username, avatar });
+		createUser: async (_, { email, password, name, avatar }) => {
+			const user = await new User({
+				email,
+				password,
+				name,
+				avatar,
+				channels: [
+					mongoose.Types.ObjectId('5e3ffb0f87b506070b3945a6'),
+					mongoose.Types.ObjectId('5e3ffb0987b506070b3945a5')
+				]
+			});
 			await user.save();
 			return user;
+		},
+		createChannel: async (_, { name }) => {
+			const channel = new Channel({ name, messages: [] });
+			await channel.save();
+			return channel;
+		},
+		newMessage: async (_, { from, body, to }) => {
+			const channel = await Channel.findById(mongoose.Types.ObjectId(to));
+			await channel.messages.push({ from: from, body: body });
+			await channel.save();
+			return channel;
 		}
 	}
 };
@@ -105,10 +161,37 @@ mongoose
 	})
 	.catch(err => console.log(err));
 
+let currentRoom = '';
+let backlog = [];
+
 io.on('connection', function(socket) {
 	//socket.emit('news', { hello: 'world' });
-	socket.on('channel', message => {
-		console.log(message);
-		socket.emit('channel', message);
+	socket.on('channel', async message => {
+		//	console.log(message);
+		if (currentRoom !== message.to) {
+			socket.leave(currentRoom);
+			socket.join(message.to);
+		}
+		io.in(message.to).emit('channel', message);
+		backlog.push(message);
+		//socket.broadcast.emit('channel', message);
+		//io.emit('channel', message);
+
+		//	setInterval(() => sync(), 2000);
+		// const channel = await Channel.findById(mongoose.Types.ObjectId(message.to));
+		// await channel.messages.push({ from: message.from, body: message.body });
+		// await channel.save();
 	});
 });
+
+let sync = async () => {
+	console.log(backlog);
+	await backlog.map(async msg => {
+		//console.log(`Upisivanje ${msg.body} u ${msg.to}`);
+		const channel = await Channel.findById(mongoose.Types.ObjectId(msg.to));
+		await channel.messages.push({ from: msg.from, body: msg.body });
+		await channel.save();
+	});
+	backlog = [];
+	//console.log(backlog);
+};
