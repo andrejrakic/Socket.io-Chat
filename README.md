@@ -1,5 +1,4 @@
-# NBP-Projekat-3 
-<a href="https://github.com/typescript-cheatsheets/react-typescript-cheatsheet/issues/81">
+# NBP-Projekat-3<a href="https://github.com/typescript-cheatsheets/react-typescript-cheatsheet/issues/81">
   <img
     height="90"
     width="90"
