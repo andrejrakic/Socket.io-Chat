@@ -29,7 +29,7 @@
 <a href="https://expressjs.com">
   <img
     height="90"
-    width="180"
+    width="200"
     alt="express"
     src="https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_1489710851/express-js.png"
     align="left"
@@ -55,7 +55,7 @@
 </a>
 
 
-<br />
+
 
 
 👨🏻‍💻 andrej.rakic@elfak.rs
