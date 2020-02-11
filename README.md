@@ -29,7 +29,7 @@
 <a href="https://expressjs.com">
   <img
     height="90"
-    width="150"
+    width="140"
     alt="express"
     src="https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_1489710851/express-js.png"
     align="left"
@@ -47,7 +47,7 @@
 <a href="https://reactjs.org">
   <img
     height="90"
-    width="140"
+    width="120"
     alt="reactjs"
     src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"
     align="left"
