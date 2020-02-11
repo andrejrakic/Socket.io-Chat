@@ -4,18 +4,55 @@
     height="90"
     width="90"
     alt="mongodb"
-    src="https://img1.freepng.es/20180702/evv/kisspng-mongodb-database-nosql-postgresql-mongo-5b39f9e31e31b4.5891115215305261791237.jpg"
+    src="https://ih1.redbubble.net/image.627565469.4617/flat,750x,075,f-pad,750x1000,f8f8f8.u7.jpg"
     align="left"
   />
 </a>
-<a href="https://github.com/typescript-cheatsheets/react-typescript-cheatsheet/issues/81">
+<a href="https://socket.io">
   <img
     height="90"
     width="90"
-    alt="react + ts logo"
-    src="https://user-images.githubusercontent.com/6764957/53868378-2b51fc80-3fb3-11e9-9cee-0277efe8a927.png"
+    alt="socketio"
+    src="https://cdn.freebiesupply.com/logos/large/2x/socket-io-logo-png-transparent.png"
+    align="left"
+  />
+</a>
+<a href="https://nodejs.org/en/">
+  <img
+    height="90"
+    width="90"
+    alt="nodejs"
+    src="https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/256/full/nodejslogo.png"
+    align="left"
+  />
+</a>
+<a href="https://expressjs.com">
+  <img
+    height="90"
+    width="90"
+    alt="express"
+    src="https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_1489710851/express-js.png"
+    align="left"
+  />
+</a>
+<a href="https://graphql.org">
+  <img
+    height="90"
+    width="90"
+    alt="graphql"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/GraphQL_Logo.svg/1200px-GraphQL_Logo.svg.png"
+    align="left"
+  />
+</a>
+<a href="https://reactjs.org">
+  <img
+    height="90"
+    width="90"
+    alt="reactjs"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"
     align="left"
   />
 </a>
 
+---
 
