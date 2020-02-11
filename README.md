@@ -2,9 +2,9 @@
 <a href="https://www.mongodb.com">
   <img
     height="90"
-    width="90"
+    width="180"
     alt="mongodb"
-    src="https://ih1.redbubble.net/image.627565469.4617/flat,750x,075,f-pad,750x1000,f8f8f8.u7.jpg"
+    src="https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png"
     align="left"
   />
 </a>
@@ -29,7 +29,7 @@
 <a href="https://expressjs.com">
   <img
     height="90"
-    width="120"
+    width="180"
     alt="express"
     src="https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_1489710851/express-js.png"
     align="left"
