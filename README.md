@@ -32,7 +32,7 @@ yarn start
 <a href="https://www.mongodb.com">
   <img
     height="90"
-    width="200"
+    width="180"
     alt="mongodb"
     src="https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png"
     align="left"
