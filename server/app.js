@@ -184,7 +184,9 @@ io.on('connection', function(socket) {
 		//socket.broadcast.emit('channel', message);
 		//io.emit('channel', message);
 
-		//	setInterval(() => sync(), 2000);
+		/** BAZA SE SINHRONIZUJE SA APLIKACIJOM NA SVAKE DVE SEKUNDE */
+		setInterval(() => sync(), 2000);
+
 		// const channel = await Channel.findById(mongoose.Types.ObjectId(message.to));
 		// await channel.messages.push({ from: message.from, body: message.body });
 		// await channel.save();
