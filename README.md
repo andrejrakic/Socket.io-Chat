@@ -1,4 +1,34 @@
 # Napredne Baze Podataka Projekat 3 - _Chat App_
+
+## Tim
+
+👨🏻‍💻 andrej.rakic@elfak.rs
+
+👨🏻‍💻 mita.st@elfak.rs
+
+👨🏻‍💻 neskecar@elfak.rs
+
+
+## Pokretanje
+
+**/client**
+```
+yarn install
+yarn start
+```
+
+**/server**
+```
+yarn install
+yarn start
+```
+
+## Demo
+
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
+
+
 <a href="https://www.mongodb.com">
   <img
     height="90"
@@ -53,35 +83,3 @@
     align="left"
   />
 </a>
-
----
----
----
----
-
-
-## Pokretanje
-
-**/client**
-```
-yarn install
-yarn start
-```
-
-**/server**
-```
-yarn install
-yarn start
-```
-
-## Demo
-
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
-
-## Tim
-
-👨🏻‍💻 andrej.rakic@elfak.rs
-
-👨🏻‍💻 mita.st@elfak.rs
-
-👨🏻‍💻 neskecar@elfak.rs
