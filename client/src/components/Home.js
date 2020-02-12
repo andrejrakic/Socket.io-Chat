@@ -70,6 +70,21 @@ export const CREATE_CHANNEL = gql`
 	}
 `;
 
+export const ADD_USER_TO_CHANNEL = gql`
+	mutation addUserToChannel($id: ID!, $channel: ID!) {
+		addUserToChannel(id: $id, channel: $channel) {
+			_id
+			email
+			password
+			name
+			avatar
+			channels {
+				_id
+			}
+		}
+	}
+`;
+
 export default function Home(props) {
 	const history = useHistory();
 	const [loggedUser, setLoggedUser] = useState(
@@ -164,6 +179,24 @@ export default function Home(props) {
 				global.channels.push(res.data.createChannel);
 				setNext(!next);
 			});
+		//setNext(!next);
+	};
+
+	let addUserToChannel = userID => {
+		console.log(global.channels[global.channels.length - 1]);
+		console.log(userID);
+		client
+			.mutate({
+				mutation: ADD_USER_TO_CHANNEL,
+				variables: {
+					id: userID,
+					channel: global.channels[global.channels.length - 1]._id
+				}
+			})
+			.then(res => {
+				console.log(res);
+				alert('User added');
+			});
 	};
 
 	return (
@@ -221,21 +254,6 @@ export default function Home(props) {
 							closeOnDocumentClick>
 							{close => (
 								<div>
-									<button
-										onClick={() => {
-											setNext(true);
-											close();
-										}}
-										style={{
-											float: 'right',
-											backgroundColor: 'red',
-											fontSize: 30,
-											color: '#fafafa',
-											border: 'none',
-											borderRadius: 4
-										}}>
-										Cancel
-									</button>
 									<div>
 										<h1>Create New Channel</h1>
 									</div>
@@ -274,24 +292,43 @@ export default function Home(props) {
 													}}>
 													Next
 												</button>
+												<button
+													onClick={() => {
+														setNext(true);
+														close();
+													}}
+													style={{
+														float: 'right',
+														backgroundColor: 'red',
+														fontSize: 30,
+														color: '#fafafa',
+														border: 'none',
+														borderRadius: 4
+													}}>
+													Cancel
+												</button>
 											</div>
 										) : (
 											<div>
 												<h3>Now add people to channel</h3>{' '}
-												{global.users.map(user => (
-													<p style={{ cursor: 'pointer' }}>
-														<img
-															src={user.avatar}
-															style={{
-																borderRadius: 50,
-																width: 30,
-																height: 30,
-																verticalAlign: 'middle'
-															}}
-														/>{' '}
-														{user.name}
-													</p>
-												))}
+												<div style={{ overflow: 'auto' }}>
+													{global.users.map(user => (
+														<p
+															style={{ cursor: 'pointer' }}
+															onClick={() => addUserToChannel(user._id)}>
+															<img
+																src={user.avatar}
+																style={{
+																	borderRadius: 50,
+																	width: 30,
+																	height: 30,
+																	verticalAlign: 'middle'
+																}}
+															/>{' '}
+															{user.name}
+														</p>
+													))}
+												</div>
 												<button
 													onClick={() => {
 														setNext(!next);

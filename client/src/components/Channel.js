@@ -97,14 +97,18 @@ export default function Channel(props) {
 
 			<div
 				style={{
-					//overflowY: 'scroll',
+					overflow: 'scroll',
+					maxHeight: 550,
 					height: 550,
-					//display: 'table-cell',
-					//verticalAlign: 'bottom'
-					display: 'flex',
+					// display: 'table-cell',
+					//verticalAlign: 'bottom',
+					//display: 'flex',
+					flex: '1 1 auto',
+					// order: 1,
 					flexDirection: 'column',
-					justifyContent: 'flex-end',
-					overflowY: 'auto'
+					//justifyContent: 'flex-end',
+					//overflowY: 'auto',
+					backgroundColor: 'red'
 				}}>
 				{messages.map(msg => (
 					<div
@@ -114,11 +118,12 @@ export default function Channel(props) {
 							borderRadius: '5px',
 							padding: '10px',
 							margin: '10px 0',
-							// display: 'flex',
-							// flexDirection: 'column',
+							//	display: 'flex',
+							//	flexDirection: 'column-reverse',
 							// minHeight: 5
-							heigth: 10
+							heigth: 10,
 							//width: 950
+							justifySelf: 'flex-end'
 						}}>
 						<img
 							src={msg.from}

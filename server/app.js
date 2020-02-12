@@ -69,6 +69,7 @@ const typeDefs = gql`
 		): User
 		createChannel(name: String!): Channel
 		newMessage(from: String!, body: String!, to: ID!): Channel
+		addUserToChannel(id: ID!, channel: ID!): User
 	}
 `;
 
@@ -141,6 +142,12 @@ const resolvers = {
 			await channel.messages.push({ from: from, body: body });
 			await channel.save();
 			return channel;
+		},
+		addUserToChannel: async (_, { id, channel }) => {
+			const user = await User.findById(mongoose.Types.ObjectId(id));
+			await user.channels.push(mongoose.Types.ObjectId(channel));
+			await user.save();
+			return user;
 		}
 	}
 };
