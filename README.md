@@ -56,6 +56,20 @@
 
 ---
 
+## Pokretanje
+
+**/client**
+```
+yarn install
+yarn start
+```
+
+**/server**
+```
+yarn install
+yarn start
+```
+
 ## Demo
 
 ![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
