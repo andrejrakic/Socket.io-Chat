@@ -32,7 +32,7 @@ yarn start
 <a href="https://www.mongodb.com">
   <img
     height="90"
-    width="180"
+    width="200"
     alt="mongodb"
     src="https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png"
     align="left"
@@ -59,7 +59,7 @@ yarn start
 <a href="https://expressjs.com">
   <img
     height="90"
-    width="180"
+    width="140"
     alt="express"
     src="https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_1489710851/express-js.png"
     align="left"
