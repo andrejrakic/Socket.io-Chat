@@ -70,7 +70,7 @@ export default function Channel(props) {
 	};
 
 	return !props.channel.avatar ? (
-		<div>
+		<div >
 			<div
 				style={{
 					backgroundColor: '#55be96',
@@ -97,18 +97,14 @@ export default function Channel(props) {
 
 			<div
 				style={{
-					overflow: 'scroll',
+					
 					maxHeight: 550,
-					height: 550,
-					// display: 'table-cell',
-					//verticalAlign: 'bottom',
-					//display: 'flex',
-					flex: '1 1 auto',
-					// order: 1,
-					flexDirection: 'column',
-					//justifyContent: 'flex-end',
-					//overflowY: 'auto',
-					backgroundColor: 'red'
+					 height: 550,
+					overflowY: 'scroll',
+					display:"flex",
+					flexDirection:"column",
+					justifyContent: 'flex-end'
+				
 				}}>
 				{messages.map(msg => (
 					<div
