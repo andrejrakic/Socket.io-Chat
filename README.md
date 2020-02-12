@@ -59,7 +59,7 @@ yarn start
 <a href="https://expressjs.com">
   <img
     height="90"
-    width="140"
+    width="180"
     alt="express"
     src="https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_1489710851/express-js.png"
     align="left"
