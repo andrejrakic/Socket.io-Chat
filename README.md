@@ -28,6 +28,8 @@ yarn start
 
 ![Demo Gif](./demo.gif)
 
+![Demo Gif](./demo1.gif)
+
 <a href="https://www.mongodb.com">
   <img
     height="90"
