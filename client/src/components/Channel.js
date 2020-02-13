@@ -3,6 +3,7 @@ import Picker from 'emoji-picker-react';
 import io from 'socket.io-client';
 import { client } from '../index';
 import gql from 'graphql-tag';
+import { dedentBlockStringValue } from 'graphql/language/blockString';
 
 export const GET_CHANNEL = gql`
 	query getChannel($channelID: ID!) {
@@ -97,17 +98,17 @@ export default function Channel(props) {
 
 			<div
 				style={{
-					
 					maxHeight: 550,
-					 height: 550,
+					height: 550,
 					overflowY: 'scroll',
-					display:"flex",
-					flexDirection:"column",
-					justifyContent: 'flex-end'
+					display:"block"
 				
 				}}>
+					<div style={{display:"flex",
+					flexDirection:"column",
+					justifyContent: 'flex-end'}}>
 				{messages.map(msg => (
-					<div
+					 <div key={Math.random()}
 						style={{
 							border: '2px solid #dedede',
 							backgroundColor: '#f1f1f1',
@@ -135,6 +136,7 @@ export default function Channel(props) {
 							}}
 						/>
 						<p>{msg.body}</p>
+						{console.log(msg)}
 					</div>
 					// <p style={{ color: 'white', bottom: 0, position: '' }}>
 					// 	{/* <img
@@ -143,7 +145,7 @@ export default function Channel(props) {
 					// 	/>{' '} */}
 					// 	{msg.body}
 					// </p>
-				))}
+				))}</div>
 			</div>
 
 			<button
