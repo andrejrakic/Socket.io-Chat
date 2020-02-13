@@ -3,7 +3,6 @@ import Picker from 'emoji-picker-react';
 import io from 'socket.io-client';
 import { client } from '../index';
 import gql from 'graphql-tag';
-import { dedentBlockStringValue } from 'graphql/language/blockString';
 
 export const GET_CHANNEL = gql`
 	query getChannel($channelID: ID!) {
@@ -36,28 +35,24 @@ export default function Channel(props) {
 
 	useEffect(() => {
 		fetchMessages();
-	}, [props.channel.name]);
+	}, [props.channel._id]);
 
 	let fetchMessages = async () => {
-		//await setMessages([]);
-		console.log(messages);
+		setMessages(messages => []);
 		await client
 			.query({
 				query: GET_CHANNEL,
 				variables: { channelID: props.channel._id }
 			})
-			.then(
-				res => {
-					if (res.data.getChannel.messages.length > 0) {
-						setMessages(messages.concat(res.data.getChannel.messages));
-					} else {
-						setMessages([]);
-					}
+			.then(res => {
+				if (res.data.getChannel.messages.length > 0) {
+					setMessages(messages =>
+						messages.concat(res.data.getChannel.messages)
+					);
+				} else {
+					setMessages(messages => []);
 				}
-				// res.data.getChannel.messages.forEach(msg =>
-				// 	setMessages([...messages, msg])
-				// );
-			)
+			})
 			.catch(err => console.log(err));
 	};
 
@@ -71,7 +66,7 @@ export default function Channel(props) {
 	};
 
 	return !props.channel.avatar ? (
-		<div >
+		<div>
 			<div
 				style={{
 					backgroundColor: '#55be96',
@@ -101,14 +96,13 @@ export default function Channel(props) {
 					maxHeight: 550,
 					height: 550,
 					overflowY: 'scroll',
-					display:"block"
-				
+					display: 'flex',
+					flexDirection: 'column',
+					justifyContent: 'flex-end'
 				}}>
-					<div style={{display:"flex",
-					flexDirection:"column",
-					justifyContent: 'flex-end'}}>
-				{messages.map(msg => (
-					 <div key={Math.random()}
+				{messages.map((msg, index) => (
+					<div
+						key={index}
 						style={{
 							border: '2px solid #dedede',
 							backgroundColor: '#f1f1f1',
@@ -136,16 +130,8 @@ export default function Channel(props) {
 							}}
 						/>
 						<p>{msg.body}</p>
-						{console.log(msg)}
 					</div>
-					// <p style={{ color: 'white', bottom: 0, position: '' }}>
-					// 	{/* <img
-					// 		src={msg.sender}
-					// 		style={{ borderRadius: 50, width: 30, height: 30 }}
-					// 	/>{' '} */}
-					// 	{msg.body}
-					// </p>
-				))}</div>
+				))}
 			</div>
 
 			<button

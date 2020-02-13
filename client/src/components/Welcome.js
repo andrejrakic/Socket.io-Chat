@@ -1,7 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { Carousel } from 'react-responsive-carousel';
 
 export default function Welcome() {
 	const history = useHistory();
@@ -18,21 +17,6 @@ export default function Welcome() {
 				alignItems: 'center'
 			}}>
 			<h1 style={{ color: '#fafafa' }}>Welcome</h1>
-			{/* <img src={require('../assets/logo.png')} height='200' width='500' /> */}
-			{/* <Carousel style={{ height: '200', width: '500' }}>
-				<div>
-					<img src={require('../assets/logo.png')} />
-					<p className='legend'>Legend 1</p>
-				</div>
-				<div>
-					<img src={require('../assets/logo.png')} />
-					<p className='legend'>Legend 2</p>
-				</div>
-				<div>
-					<img src={require('../assets/logo.png')} />
-					<p className='legend'>Legend 3</p>
-				</div>
-			</Carousel> */}
 			<br />
 			<br />
 			<button

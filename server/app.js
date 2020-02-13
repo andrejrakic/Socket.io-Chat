@@ -194,7 +194,6 @@ io.on('connection', function(socket) {
 });
 
 let sync = async () => {
-	console.log(backlog);
 	await backlog.map(async msg => {
 		//console.log(`Upisivanje ${msg.body} u ${msg.to}`);
 		const channel = await Channel.findById(mongoose.Types.ObjectId(msg.to));

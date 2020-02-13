@@ -179,7 +179,6 @@ export default function Home(props) {
 				global.channels.push(res.data.createChannel);
 				setNext(!next);
 			});
-		//setNext(!next);
 	};
 
 	let addUserToChannel = userID => {
@@ -313,7 +312,8 @@ export default function Home(props) {
 												<h3>Now add people to channel</h3>{' '}
 												<div style={{ overflow: 'auto' }}>
 													{global.users.map(user => (
-														<p key={user.name}
+														<p
+															key={user.name}
 															style={{ cursor: 'pointer' }}
 															onClick={() => addUserToChannel(user._id)}>
 															<img
@@ -370,7 +370,8 @@ export default function Home(props) {
 								paddingLeft: 1
 							}}>
 							{global.channels.map(ch => (
-								<p key={ch.name}
+								<p
+									key={ch.name}
 									style={{ color: 'white', cursor: 'pointer' }}
 									onClick={() => setChannel(ch)}>
 									#{ch.name}
@@ -378,7 +379,8 @@ export default function Home(props) {
 							))}
 							<br />
 							{global.users.map(user => (
-								<p key={user.name}
+								<p
+									key={user.name}
 									style={{ color: 'white', cursor: 'pointer' }}
 									onClick={() => setChannel(user)}>
 									<img
