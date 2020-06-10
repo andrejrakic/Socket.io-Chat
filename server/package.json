@@ -9,7 +9,7 @@
     "start": "nodemon app.js"
   },
   "dependencies": {
-    "apollo-server-express": "^2.9.15",
+    "apollo-server-express": "^2.14.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "graphql-tag": "^2.10.1",
